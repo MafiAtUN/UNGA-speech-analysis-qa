@@ -81,40 +81,62 @@ header h1 {
     padding: 40px;
 }
 
+/* Session Description */
+.session-description {
+    margin-bottom: 30px;
+    padding: 20px;
+    background: rgba(26, 115, 232, 0.1);
+    border-left: 4px solid var(--primary-color);
+    border-radius: 8px;
+    color: var(--text-primary);
+    line-height: 1.7;
+    font-size: 1rem;
+}
+
+.session-description strong {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
 /* Tabs Styles */
 .tabs {
     display: flex;
-    gap: 0;
-    border-bottom: 2px solid var(--border-color);
+    gap: 15px;
     margin-bottom: 30px;
-    background: var(--bg-secondary);
-    border-radius: 8px 8px 0 0;
+    justify-content: center;
 }
 
 .tab-btn {
     flex: 1;
-    padding: 15px 30px;
-    border: none;
-    background: transparent;
-    color: var(--text-secondary);
-    font-size: 1rem;
-    font-weight: 500;
+    max-width: 300px;
+    padding: 18px 40px;
+    border: 2px solid var(--primary-color);
+    background: var(--bg-primary);
+    color: var(--primary-color);
+    font-size: 1.1rem;
+    font-weight: 600;
     cursor: pointer;
     transition: all 0.3s ease;
-    border-bottom: 3px solid transparent;
     font-family: inherit;
-    position: relative;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
 }
 
 .tab-btn:hover {
     background: rgba(26, 115, 232, 0.1);
-    color: var(--primary-color);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
 }
 
 .tab-btn.active {
-    color: var(--primary-color);
-    border-bottom-color: var(--primary-color);
-    background: var(--bg-primary);
+    background: var(--primary-color);
+    color: white;
+    box-shadow: var(--shadow-lg);
+}
+
+.tab-btn.active:hover {
+    background: var(--primary-hover);
+    transform: translateY(-2px);
 }
 
 .tab-content {
@@ -132,22 +154,6 @@ header h1 {
     padding: 30px;
     border-radius: 12px;
     border: 1px solid var(--border-color);
-}
-
-.form-description {
-    margin-bottom: 25px;
-    padding: 15px;
-    background: rgba(26, 115, 232, 0.1);
-    border-left: 4px solid var(--primary-color);
-    border-radius: 8px;
-    color: var(--text-primary);
-    line-height: 1.6;
-    font-size: 0.95rem;
-}
-
-.form-description strong {
-    color: var(--primary-color);
-    font-weight: 600;
 }
 
 .form-section h2 {
@@ -413,6 +419,22 @@ footer p {
 
     .main-content {
         padding: 20px;
+    }
+
+    .session-description {
+        padding: 15px;
+        font-size: 0.9rem;
+    }
+
+    .tabs {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .tab-btn {
+        max-width: 100%;
+        padding: 15px 30px;
+        font-size: 1rem;
     }
 
     .form-section {
