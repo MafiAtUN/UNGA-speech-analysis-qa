@@ -10,7 +10,35 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Add another question button
     document.getElementById('addAnotherBtn').addEventListener('click', handleAddAnother);
+    
+    // Tab switching
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const tabName = btn.dataset.tab;
+            switchTab(tabName);
+        });
+    });
 });
+
+// Handle tab switching
+function switchTab(tabName) {
+    // Update tab buttons
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.classList.remove('active');
+    });
+    document.querySelector(`[data-tab="${tabName}"]`).classList.add('active');
+    
+    // Update tab content
+    document.querySelectorAll('.tab-content').forEach(content => {
+        content.classList.remove('active');
+    });
+    document.getElementById(`${tabName}-tab`).classList.add('active');
+    
+    // If switching to questions tab, ensure questions are rendered
+    if (tabName === 'questions') {
+        renderQuestions();
+    }
+}
 
 // Handle form submission
 function handleSubmit(e) {
@@ -41,6 +69,9 @@ function handleSubmit(e) {
     
     // Show success message
     showNotification('Question submitted successfully!');
+    
+    // Switch to questions tab to show the new question
+    switchTab('questions');
 }
 
 // Handle "Add Another" button

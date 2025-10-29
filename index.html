@@ -14,62 +14,71 @@
         </header>
 
         <div class="main-content">
-            <!-- Question Form Section -->
-            <section class="form-section">
-                <h2>Submit a Question</h2>
-                <form id="questionForm" class="question-form">
-                    <div class="form-group">
-                        <label for="name">Name *</label>
-                        <input type="text" id="name" name="name" required>
+            <!-- Tabs Navigation -->
+            <div class="tabs">
+                <button class="tab-btn active" data-tab="submit">Submit Question</button>
+                <button class="tab-btn" data-tab="questions">View Questions</button>
+            </div>
+
+            <!-- Submit Question Tab -->
+            <div class="tab-content active" id="submit-tab">
+                <section class="form-section">
+                    <form id="questionForm" class="question-form">
+                        <div class="form-group">
+                            <label for="name">Name *</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="title">Title/Position</label>
+                            <input type="text" id="title" name="title">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="organization">Organization</label>
+                            <input type="text" id="organization" name="organization">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="contacts">Contact (Email/Phone) *</label>
+                            <input type="text" id="contacts" name="contacts" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="category">Category *</label>
+                            <select id="category" name="category" required>
+                                <option value="">Select a category</option>
+                                <option value="technical">Technical</option>
+                                <option value="features">Features</option>
+                                <option value="others">Others</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="question">Question *</label>
+                            <textarea id="question" name="question" rows="4" required placeholder="Enter your question here..."></textarea>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary">Submit Question</button>
+                            <button type="button" class="btn btn-secondary" id="addAnotherBtn">Add Another Question</button>
+                        </div>
+                    </form>
+                </section>
+            </div>
+
+            <!-- View Questions Tab -->
+            <div class="tab-content" id="questions-tab">
+                <section class="questions-section">
+                    <div class="section-header">
+                        <h2>Previously Asked Questions</h2>
                     </div>
 
-                    <div class="form-group">
-                        <label for="title">Title/Position</label>
-                        <input type="text" id="title" name="title">
+                    <div id="questionsList" class="questions-list">
+                        <p class="empty-state">No questions submitted yet. Be the first to ask!</p>
                     </div>
-
-                    <div class="form-group">
-                        <label for="organization">Organization</label>
-                        <input type="text" id="organization" name="organization">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="contacts">Contact (Email/Phone) *</label>
-                        <input type="text" id="contacts" name="contacts" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="category">Category *</label>
-                        <select id="category" name="category" required>
-                            <option value="">Select a category</option>
-                            <option value="technical">Technical</option>
-                            <option value="features">Features</option>
-                            <option value="others">Others</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="question">Question *</label>
-                        <textarea id="question" name="question" rows="4" required placeholder="Enter your question here..."></textarea>
-                    </div>
-
-                    <div class="form-actions">
-                        <button type="submit" class="btn btn-primary">Submit Question</button>
-                        <button type="button" class="btn btn-secondary" id="addAnotherBtn">Add Another Question</button>
-                    </div>
-                </form>
-            </section>
-
-            <!-- Submitted Questions Section -->
-            <section class="questions-section">
-                <div class="section-header">
-                    <h2>Submitted Questions</h2>
-                </div>
-
-                <div id="questionsList" class="questions-list">
-                    <p class="empty-state">No questions submitted yet. Be the first to ask!</p>
-                </div>
-            </section>
+                </section>
+            </div>
         </div>
 
         <footer>
