@@ -13,9 +13,12 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Tab switching
     document.querySelectorAll('.tab-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-            const tabName = btn.dataset.tab;
-            switchTab(tabName);
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            const tabName = btn.getAttribute('data-tab');
+            if (tabName) {
+                switchTab(tabName);
+            }
         });
     });
 });
@@ -26,13 +29,21 @@ function switchTab(tabName) {
     document.querySelectorAll('.tab-btn').forEach(btn => {
         btn.classList.remove('active');
     });
-    document.querySelector(`[data-tab="${tabName}"]`).classList.add('active');
+    
+    const activeBtn = document.querySelector(`[data-tab="${tabName}"]`);
+    if (activeBtn) {
+        activeBtn.classList.add('active');
+    }
     
     // Update tab content
     document.querySelectorAll('.tab-content').forEach(content => {
         content.classList.remove('active');
     });
-    document.getElementById(`${tabName}-tab`).classList.add('active');
+    
+    const activeTab = document.getElementById(`${tabName}-tab`);
+    if (activeTab) {
+        activeTab.classList.add('active');
+    }
     
     // If switching to questions tab, ensure questions are rendered
     if (tabName === 'questions') {
