@@ -10,12 +10,6 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Add another question button
     document.getElementById('addAnotherBtn').addEventListener('click', handleAddAnother);
-    
-    // Export JSON button
-    document.getElementById('exportBtn').addEventListener('click', exportJSON);
-    
-    // Clear all button
-    document.getElementById('clearBtn').addEventListener('click', clearAll);
 });
 
 // Handle form submission
@@ -136,39 +130,6 @@ function deleteQuestion(id) {
         saveQuestions(filtered);
         renderQuestions();
         showNotification('Question deleted successfully!');
-    }
-}
-
-// Export questions as JSON
-function exportJSON() {
-    const questions = getQuestions();
-    
-    if (questions.length === 0) {
-        alert('No questions to export!');
-        return;
-    }
-    
-    const dataStr = JSON.stringify(questions, null, 2);
-    const dataBlob = new Blob([dataStr], { type: 'application/json' });
-    const url = URL.createObjectURL(dataBlob);
-    
-    const link = document.createElement('a');
-    link.href = url;
-    link.download = `unga-questions-${new Date().toISOString().split('T')[0]}.json`;
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-    URL.revokeObjectURL(url);
-    
-    showNotification('Questions exported successfully!');
-}
-
-// Clear all questions
-function clearAll() {
-    if (confirm('Are you sure you want to clear all questions? This action cannot be undone.')) {
-        localStorage.removeItem(STORAGE_KEY);
-        renderQuestions();
-        showNotification('All questions cleared!');
     }
 }
 
