@@ -129,14 +129,6 @@ function renderQuestions() {
     }
     
     questionsList.innerHTML = questions.map(question => createQuestionCard(question)).join('');
-    
-    // Add delete event listeners
-    document.querySelectorAll('.delete-btn').forEach(btn => {
-        btn.addEventListener('click', (e) => {
-            const id = e.target.closest('.question-card').dataset.id;
-            deleteQuestion(id);
-        });
-    });
 }
 
 // Create question card HTML
@@ -157,22 +149,10 @@ function createQuestionCard(question) {
                     </div>
                     <span class="category-badge ${categoryClass}">${question.category}</span>
                 </div>
-                <button class="delete-btn" aria-label="Delete question">🗑️</button>
             </div>
             <div class="question-text">${escapeHtml(question.question)}</div>
         </div>
     `;
-}
-
-// Delete a question
-function deleteQuestion(id) {
-    if (confirm('Are you sure you want to delete this question?')) {
-        const questions = getQuestions();
-        const filtered = questions.filter(q => q.id !== id);
-        saveQuestions(filtered);
-        renderQuestions();
-        showNotification('Question deleted successfully!');
-    }
 }
 
 // Escape HTML to prevent XSS
